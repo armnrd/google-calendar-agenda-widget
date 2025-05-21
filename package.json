@@ -1,0 +1,53 @@
+{
+  "name": "google-calendar-agenda-widget",
+  "version": "1.0.0",
+  "description": "Google Calendar Agenda Widget",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run next:dev\" \"npm run electron:dev\"",
+    "next:dev": "next dev",
+    "electron:dev": "wait-on http://localhost:3000 && electron .",
+    "build": "next build && next export -o build",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "site.arindam.google-calendar-agenda-widget",
+    "productName": "Google Calendar Agenda Widget",
+    "files": [
+      "electron/**/*",
+      "build/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "19.1.4",
+    "concurrently": "^9.1.2",
+    "electron": "^36.2.1",
+    "electron-builder": "^26.0.12",
+    "electron-is-dev": "^3.0.1",
+    "wait-on": "^8.0.3"
+  },
+  "dependencies": {
+    "lucide-react": "^0.511.0",
+    "next": "^15.3.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
